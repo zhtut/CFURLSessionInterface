@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CFURLSessionInterface/*.{h,c}'
   s.public_header_files = 'CFURLSessionInterface/*.h'
-  s.module_map = 'CFURLSessionInterface/'
+  s.module_map = 'CFURLSessionInterface/module.map'
 
   s.dependency 'curl'
   
