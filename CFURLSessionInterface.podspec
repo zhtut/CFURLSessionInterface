@@ -12,6 +12,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CFURLSessionInterface/*.{h,c}'
   s.public_header_files = 'CFURLSessionInterface/*.h'
+  
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 
   s.dependency 'curl'
   
