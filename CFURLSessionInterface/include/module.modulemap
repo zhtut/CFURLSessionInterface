@@ -1,0 +1,3 @@
+module CFURLSessionInterface {
+	header "CFURLSessionInterface.h"
+}
