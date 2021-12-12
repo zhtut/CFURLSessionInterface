@@ -20,7 +20,12 @@
 
 #include "CFURLSessionInterface.h"
 #include <CoreFoundation/CFString.h>
+
+#if __has_include(<curl/curl.h>)
 #include <curl/curl.h>
+#else
+@import curl;
+#endif
 
 FILE* aa = NULL;
 CURL * gcurl = NULL;

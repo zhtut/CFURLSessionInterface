@@ -4,12 +4,13 @@
 import PackageDescription
 
 let package = Package(name: "CFURLSessionInterface",
+                      platforms: [.iOS(.v9)],
                       products: [
                         .library(name: "CFURLSessionInterface", targets: ["CFURLSessionInterface"]),
                       ],
                       dependencies: [
-                        
+                        .package(name: "curl", path: "../curl")
                       ],
                       targets: [
-                        .target(name: "CFURLSessionInterface", path: "CFURLSessionInterface"),
+                        .target(name: "CFURLSessionInterface", dependencies: ["curl"], path: "CFURLSessionInterface"),
                       ])

@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CFURLSessionInterface'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'curl接口文件'
   s.homepage         = 'https://github.com/zhtut/CFURLSessionInterface'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'CFURLSessionInterface/**/*.{h,c}'
+  s.source_files = 'CFURLSessionInterface/**/*.{h,m}'
   s.public_header_files = 'CFURLSessionInterface/**/*.h'
   
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
