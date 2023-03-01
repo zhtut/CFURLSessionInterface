@@ -19,7 +19,6 @@
 //===----------------------------------------------------------------------===//
 
 #include "CFURLSessionInterface.h"
-#include <CoreFoundation/CFInternal.h>
 #include <CoreFoundation/CFString.h>
 
 #if __has_include(<curl/curl.h>)
@@ -183,18 +182,18 @@ Boolean CFURLSessionWebSocketsSupported(void) {
 }
 
 CFURLSessionEasyCode CFURLSessionEasyHandleWebSocketsReceive(CFURLSessionEasyHandle _Nonnull handle, char *_Nonnull data, size_t dataLen, size_t * _Nonnull receivedDataLen, CFURLSessionWebSocketsFrame * _Nullable receivedFrame) {
-    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return CFURLSessionEasyCodeNOT_BUILT_IN;
 }
 CFURLSessionEasyCode CFURLSessionEasyHandleWebSocketsSend(CFURLSessionEasyHandle _Nonnull handle, const char *_Nonnull data, size_t dataLen, size_t * _Nonnull writtenDataLen, long long frameSize, CFURLSessionWebSocketsMessageFlag messageFlags) {
-    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return CFURLSessionEasyCodeNOT_BUILT_IN;
 }
 
 struct CFURLSessionWebSocketsFrame emptyFrame = { 0, 0, 0, 0 };
 
 CFURLSessionWebSocketsFrame * _Nonnull CFURLSessionEasyHandleWebSocketsMetadata(CFURLSessionEasyHandle _Nonnull handle) {
-    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return &emptyFrame;
 }
 
