@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.author           = { 'ztgtut' => 'ztgtut@github.com' }
   s.source           = { :git => 'https://github.com/zhtut/CFURLSessionInterface.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
+  s.osx.deployment_target = '10.13'
 
   s.source_files = 'CFURLSessionInterface/**/*.{h,m}'
   s.public_header_files = 'CFURLSessionInterface/**/*.h'
