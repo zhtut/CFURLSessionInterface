@@ -9,13 +9,15 @@ let package = Package(name: "CFURLSessionInterface",
                         .library(name: "CFURLSessionInterface", targets: ["CFURLSessionInterface"]),
                       ],
                       dependencies: [
-                        .package(name: "curl", url: "https://github.com/zhtut/curl.git", from: "7.80.0")
+                        .package(name: "curl", url: "https://github.com/zhtut/curl.git", from: "7.88.0")
                       ],
                       targets: [
                         .target(name: "CFURLSessionInterface",
-                                dependencies: ["curl"],
+                                dependencies: [
+                                    "curl"
+                                ],
                                 path: "CFURLSessionInterface",
                                 linkerSettings: [
-                            .linkedLibrary("z")
-                        ]),
+                                    .linkedLibrary("z")
+                                ]),
                       ])
