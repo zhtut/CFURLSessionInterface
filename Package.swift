@@ -4,7 +4,12 @@
 import PackageDescription
 
 let package = Package(name: "CFURLSessionInterface",
-                      platforms: [.iOS(.v11), .macOS(.v10_13)],
+                      platforms: [
+                        .iOS(.v9),
+                        .tvOS(.v9),
+                        .watchOS(.v4),
+                        .macOS(.v10_13)
+                      ],
                       products: [
                         .library(name: "CFURLSessionInterface", targets: ["CFURLSessionInterface"]),
                       ],

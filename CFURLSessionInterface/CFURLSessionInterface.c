@@ -27,6 +27,7 @@
 @import curl;
 #endif
 
+
 FILE* aa = NULL;
 CURL * gcurl = NULL;
 
@@ -182,18 +183,18 @@ Boolean CFURLSessionWebSocketsSupported(void) {
 }
 
 CFURLSessionEasyCode CFURLSessionEasyHandleWebSocketsReceive(CFURLSessionEasyHandle _Nonnull handle, char *_Nonnull data, size_t dataLen, size_t * _Nonnull receivedDataLen, CFURLSessionWebSocketsFrame * _Nullable receivedFrame) {
-//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return CFURLSessionEasyCodeNOT_BUILT_IN;
 }
 CFURLSessionEasyCode CFURLSessionEasyHandleWebSocketsSend(CFURLSessionEasyHandle _Nonnull handle, const char *_Nonnull data, size_t dataLen, size_t * _Nonnull writtenDataLen, long long frameSize, CFURLSessionWebSocketsMessageFlag messageFlags) {
-//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return CFURLSessionEasyCodeNOT_BUILT_IN;
 }
 
 struct CFURLSessionWebSocketsFrame emptyFrame = { 0, 0, 0, 0 };
 
 CFURLSessionWebSocketsFrame * _Nonnull CFURLSessionEasyHandleWebSocketsMetadata(CFURLSessionEasyHandle _Nonnull handle) {
-//    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
+    CFAssert(false, __kCFLogAssertion, "Cannot use WebSockets functions without libcurl >= 7.86.0");
     return &emptyFrame;
 }
 
@@ -661,4 +662,23 @@ CFURLSessionSList *_Nullable CFURLSessionSListAppend(CFURLSessionSList *_Nullabl
 }
 void CFURLSessionSListFreeAll(CFURLSessionSList *_Nullable list) {
     curl_slist_free_all((struct curl_slist *) list);
+}
+
+bool CFURLSessionCurlHostIsEqual(const char *_Nonnull url, const char *_Nonnull expectedHost) {
+#if LIBCURL_VERSION_MAJOR > 7 || (LIBCURL_VERSION_MAJOR == 7 && LIBCURL_VERSION_MINOR >= 62)
+    bool isEqual = false;
+    CURLU *h = curl_url();
+    if (0 == curl_url_set(h, CURLUPART_URL, url, 0)) {
+        char *curlHost = NULL;
+        if (0 == curl_url_get(h, CURLUPART_HOST, &curlHost, 0)) {
+            isEqual = (strlen(curlHost) == strlen(expectedHost) &&
+                       strncmp(curlHost, expectedHost, strlen(curlHost)) == 0);
+            curl_free(curlHost);
+        }
+        curl_free(h);
+    }
+    return isEqual;
+#else
+    return true;
+#endif
 }
